@@ -1,5 +1,75 @@
 import React from 'react';
+import styled from 'styled-components';
+import { ChatMessage } from '../types/types';
+import { convertDate } from '../utils/utils';
+import { Container } from './Container';
+import { UserAvatar } from './UserAvatar';
 
-export const ContactItem = () => {
-  return <div>ContactItem</div>;
+type ContactItemProps = {
+  img: string;
+  name: string;
+  lastMessage?: ChatMessage;
+};
+
+const UserNameWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const UserName = styled.h3`
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+`;
+
+const ContactItemWrapper = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #ececec;
+`;
+
+const UserInfo = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+const MessageText = styled.p`
+  margin: 0;
+  color: #a0a0a0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 250px;
+  white-space: nowrap;
+`;
+
+const MessageDate = styled.p`
+  color: #6b6b6b;
+  margin: 0;
+  font-size: 14px;
+  flex-shrink: 0;
+`;
+
+export const ContactItem = ({ img, name, lastMessage }: ContactItemProps) => {
+  let date: string | undefined;
+  let message = 'Say "Hi" to your contact';
+  if (lastMessage) {
+    const dateObject = convertDate(lastMessage.date);
+    date = `${dateObject.month} ${dateObject.day}, ${dateObject.year}`;
+    message = lastMessage.text;
+  }
+
+  return (
+    <ContactItemWrapper>
+      <UserInfo>
+        <UserAvatar imgPath={img} contactName={name} />
+        <UserNameWrapper>
+          <UserName>{name}</UserName>
+          <MessageText>{message}</MessageText>
+        </UserNameWrapper>
+      </UserInfo>
+      {date && <MessageDate>{date}</MessageDate>}
+    </ContactItemWrapper>
+  );
 };

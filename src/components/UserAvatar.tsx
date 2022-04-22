@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import FailIcon from '../assets/svg/fail.svg';
 import SuccessIcon from '../assets/svg/success.svg';
 
 type UserAvatarProps = {
   imgPath: string;
   contactName: string;
-  isFamiliar?: boolean;
+  isRead?: boolean;
+  imgSize?: string;
 };
 
 const Icon = styled.img`
@@ -26,19 +26,22 @@ const UserImg = styled.img`
 
 const AvatarWrapper = styled.div`
   position: relative;
-  width: 64px;
-  height: 64px;
+  display: inline-block;
+  width: ${(props: { imgSize?: string }) => props.imgSize}px;
+  height: ${(props: { imgSize?: string }) => props.imgSize}px;
+  flex-shrink: 0;
 `;
 
-export const UserAvatar = ({ imgPath, contactName, isFamiliar }: UserAvatarProps) => {
+export const UserAvatar = ({ imgPath, contactName, isRead, imgSize }: UserAvatarProps) => {
   return (
-    <AvatarWrapper>
+    <AvatarWrapper imgSize={imgSize}>
       <UserImg src={imgPath} alt={contactName} />
-      {isFamiliar ? <Icon src={SuccessIcon} alt="" /> : <Icon src={FailIcon} alt="" />}
+      {isRead && <Icon src={SuccessIcon} alt="" />}
     </AvatarWrapper>
   );
 };
 
 UserAvatar.defaultProps = {
-  isFamiliar: true,
+  isRead: true,
+  imgSize: '64',
 };

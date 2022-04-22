@@ -9,8 +9,10 @@ const SearchInput = styled.input`
   border: 1px solid #ececec;
   width: 100%;
   outline: none;
-  background: url(${SearchIcon}) no-repeat scroll 12px;
   background-color: #fafafa;
+  background-image: url(${SearchIcon});
+  background-position: 12px;
+  background-repeat: no-repeat;
   background-size: 16px;
   padding: 12px 12px 12px 40px;
 `;

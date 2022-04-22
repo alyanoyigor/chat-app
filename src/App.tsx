@@ -6,6 +6,7 @@ import { MenuContacts } from './components/MenuContacts';
 const AppWrapper = styled.div`
   display: grid;
   grid-template-columns: 2fr 3fr;
+  overflow: hidden;
 `;
 
 const App = () => {
