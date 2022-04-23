@@ -15,6 +15,17 @@ const ListTitle = styled(Container)`
 
 const Wrapper = styled.div`
   overflow: auto;
+
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+  }
 `;
 
 export const ContactsList = () => {
@@ -33,6 +44,12 @@ export const ContactsList = () => {
       const contactItem: HTMLElement | null = target.closest('.contact-item');
       if (contactItem && contactItem.dataset.userid) {
         dispatch({ type: 'SET_USER_ID', payload: contactItem.dataset.userid });
+        const contact = contactsData.find(
+          (contactData) => contactData.id === Number(contactItem.dataset.userid)
+        );
+        if (contact && contact.messages[contact.messages.length - 1]?.isRead === false) {
+          dispatch({ type: 'SET_READ_MESSAGES', payload: contactItem.dataset.userid });
+        }
       }
     }
   };
@@ -44,6 +61,7 @@ export const ContactsList = () => {
         contactsData.map((contact) => (
           <ContactItem
             lastMessage={contact.messages[contact.messages.length - 1]}
+            isReadLastMessage={contact.messages[contact.messages.length - 1]?.isRead}
             name={contact.name}
             img={contact.imgPath}
             key={contact.id}

@@ -10,6 +10,16 @@ type ChatMessagesListProps = {
 const MessagesList = styled.div`
   height: 100%;
   overflow: auto;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+  }
 `;
 
 export const ChatMessagesList = ({ contactData }: ChatMessagesListProps) => {

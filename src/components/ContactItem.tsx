@@ -9,6 +9,7 @@ type ContactItemProps = {
   img: string;
   name: string;
   id: number;
+  isReadLastMessage?: boolean;
   lastMessage?: ChatMessageData;
 };
 
@@ -30,6 +31,7 @@ const ContactItemWrapper = styled(Container)`
   padding-top: 24px;
   padding-bottom: 24px;
   border-bottom: 1px solid #ececec;
+  position: relative;
 `;
 
 const UserInfo = styled.div`
@@ -53,7 +55,23 @@ const MessageDate = styled.p`
   flex-shrink: 0;
 `;
 
-export const ContactItem = ({ img, name, id, lastMessage }: ContactItemProps) => {
+const UnreadMessageCircle = styled.span`
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background-color: #2b3ee9;
+`;
+
+export const ContactItem = ({
+  img,
+  name,
+  id,
+  isReadLastMessage,
+  lastMessage,
+}: ContactItemProps) => {
   let date: string | undefined;
   let message = 'Say "Hi" to your contact';
   if (lastMessage) {
@@ -72,6 +90,7 @@ export const ContactItem = ({ img, name, id, lastMessage }: ContactItemProps) =>
         </UserNameWrapper>
       </UserInfo>
       {date && <MessageDate>{date}</MessageDate>}
+      {isReadLastMessage === false && <UnreadMessageCircle />}
     </ContactItemWrapper>
   );
 };
