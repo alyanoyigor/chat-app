@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { contactsData } from '../data/contactsData';
+import { ChatMessageData } from '../types/types';
 import { convertDate } from '../utils/utils';
 import { Container } from './Container';
 import { UserAvatar } from './UserAvatar';
@@ -32,16 +32,21 @@ const MessageInfoWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const ChatMessage = () => {
-  const data = contactsData[0];
-  const date = convertDate(data.messages[0].date, { month: '2-digit' }, { year: '2-digit' });
+type ChatMessageProps = {
+  contactName: string;
+  contactImg: string;
+  message: ChatMessageData;
+};
+
+export const ChatMessage = ({ contactName, contactImg, message }: ChatMessageProps) => {
+  const date = convertDate(message.date, { month: '2-digit' }, { year: '2-digit' });
   return (
-    <MessageContainer isFromMe={data.messages[0].isFromMe}>
-      {!data.messages[0].isFromMe && (
-        <UserAvatar imgPath={data.imgPath} contactName={data.name} isRead={false} imgSize="48" />
+    <MessageContainer isFromMe={message.isFromMe}>
+      {!message.isFromMe && (
+        <UserAvatar imgPath={contactImg} contactName={contactName} isRead={false} imgSize="48" />
       )}
       <MessageInfoWrapper>
-        <MessageText isFromMe={data.messages[0].isFromMe}>{data.messages[0].text}</MessageText>
+        <MessageText isFromMe={message.isFromMe}>{message.text}</MessageText>
         <MessageDate>
           {date.month}/{date.day}/{date.year}, {date.time}
         </MessageDate>

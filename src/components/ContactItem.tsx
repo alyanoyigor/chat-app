@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ChatMessage } from '../types/types';
+import { ChatMessageData } from '../types/types';
 import { convertDate } from '../utils/utils';
 import { Container } from './Container';
 import { UserAvatar } from './UserAvatar';
@@ -8,7 +8,8 @@ import { UserAvatar } from './UserAvatar';
 type ContactItemProps = {
   img: string;
   name: string;
-  lastMessage?: ChatMessage;
+  id: number;
+  lastMessage?: ChatMessageData;
 };
 
 const UserNameWrapper = styled.div`
@@ -23,6 +24,7 @@ const UserName = styled.h3`
 `;
 
 const ContactItemWrapper = styled(Container)`
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   padding-top: 24px;
@@ -51,7 +53,7 @@ const MessageDate = styled.p`
   flex-shrink: 0;
 `;
 
-export const ContactItem = ({ img, name, lastMessage }: ContactItemProps) => {
+export const ContactItem = ({ img, name, id, lastMessage }: ContactItemProps) => {
   let date: string | undefined;
   let message = 'Say "Hi" to your contact';
   if (lastMessage) {
@@ -61,7 +63,7 @@ export const ContactItem = ({ img, name, lastMessage }: ContactItemProps) => {
   }
 
   return (
-    <ContactItemWrapper>
+    <ContactItemWrapper data-userid={id} className="contact-item">
       <UserInfo>
         <UserAvatar imgPath={img} contactName={name} />
         <UserNameWrapper>

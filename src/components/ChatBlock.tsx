@@ -14,7 +14,7 @@ export const ChatBlock = () => {
   return (
     <ChatContainer>
       <ChatUserInfo />
-      <ChatMessagesList />
+      {/* <ChatMessagesList /> */}
       <ChatField />
     </ChatContainer>
   );

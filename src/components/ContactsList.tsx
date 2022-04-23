@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { contactsData } from '../data/contactsData';
 import { ContactItem } from './ContactItem';
@@ -17,8 +17,20 @@ const Wrapper = styled.div`
 `;
 
 export const ContactsList = () => {
+  const [selectedUserId, setSelectedUserId] = useState('');
+
+  const handleSelectContactChat = (event: React.MouseEvent<HTMLElement>) => {
+    const { target } = event;
+    if (target instanceof HTMLElement) {
+      const contactItem: HTMLElement | null = target.closest('.contact-item');
+      if (contactItem && contactItem.dataset.userid) {
+        setSelectedUserId(contactItem.dataset.userid);
+      }
+    }
+  };
+
   return (
-    <Wrapper>
+    <Wrapper onClick={handleSelectContactChat}>
       <ListTitle>Chats</ListTitle>
       {contactsData.map((contact) => (
         <ContactItem
@@ -26,6 +38,7 @@ export const ContactsList = () => {
           name={contact.name}
           img={contact.imgPath}
           key={contact.id}
+          id={contact.id}
         />
       ))}
     </Wrapper>

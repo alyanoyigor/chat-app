@@ -1,13 +1,6 @@
-import { ChatMessage } from '../types/types';
+import { ContactData } from '../types/types';
 
-type ContactsData = {
-  imgPath: string;
-  name: string;
-  id: number;
-  messages: ChatMessage[];
-};
-
-export const contactsData: ContactsData[] = [
+export const contactsData: ContactData[] = [
   {
     imgPath: 'https://randomuser.me/api/portraits/women/28.jpg',
     name: 'Alice Freeman',
