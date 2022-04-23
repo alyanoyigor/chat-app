@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { contactsData } from '../data/contactsData';
+import { State } from '../types/types';
 import { ContactItem } from './ContactItem';
 import { Container } from './Container';
 
@@ -17,14 +18,21 @@ const Wrapper = styled.div`
 `;
 
 export const ContactsList = () => {
-  const [selectedUserId, setSelectedUserId] = useState('');
+  const dispatch = useDispatch();
+  const searchValue = useSelector((state: State) => state.searchContactValue);
+  let contactsData = useSelector((state: State) => state.contactsData);
+  if (searchValue) {
+    contactsData = contactsData.filter((contact) =>
+      contact.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }
 
   const handleSelectContactChat = (event: React.MouseEvent<HTMLElement>) => {
     const { target } = event;
     if (target instanceof HTMLElement) {
       const contactItem: HTMLElement | null = target.closest('.contact-item');
       if (contactItem && contactItem.dataset.userid) {
-        setSelectedUserId(contactItem.dataset.userid);
+        dispatch({ type: 'SET_USER_ID', payload: contactItem.dataset.userid });
       }
     }
   };
@@ -32,15 +40,21 @@ export const ContactsList = () => {
   return (
     <Wrapper onClick={handleSelectContactChat}>
       <ListTitle>Chats</ListTitle>
-      {contactsData.map((contact) => (
-        <ContactItem
-          lastMessage={contact.messages[contact.messages.length - 1]}
-          name={contact.name}
-          img={contact.imgPath}
-          key={contact.id}
-          id={contact.id}
-        />
-      ))}
+      {contactsData.length ? (
+        contactsData.map((contact) => (
+          <ContactItem
+            lastMessage={contact.messages[contact.messages.length - 1]}
+            name={contact.name}
+            img={contact.imgPath}
+            key={contact.id}
+            id={contact.id}
+          />
+        ))
+      ) : (
+        <Container>
+          <h2>No contacts found</h2>
+        </Container>
+      )}
     </Wrapper>
   );
 };

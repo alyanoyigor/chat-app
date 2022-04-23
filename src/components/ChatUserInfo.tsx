@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { contactsData } from '../data/contactsData';
 import { Container } from './Container';
 import { UserAvatar } from './UserAvatar';
 
@@ -18,12 +17,16 @@ const ChatUserInfoWrapper = styled(Container)`
   border-bottom: 1px solid #ececec;
 `;
 
-export const ChatUserInfo = () => {
-  const data = contactsData[0];
+type ChatUserInfoProps = {
+  contactName: string;
+  contactImg: string;
+};
+
+export const ChatUserInfo = ({ contactName, contactImg }: ChatUserInfoProps) => {
   return (
     <ChatUserInfoWrapper>
-      <UserAvatar imgPath={data.imgPath} contactName={data.name} />
-      <UserName>{data.name}</UserName>
+      <UserAvatar imgPath={contactImg} contactName={contactName} />
+      <UserName>{contactName}</UserName>
     </ChatUserInfoWrapper>
   );
 };

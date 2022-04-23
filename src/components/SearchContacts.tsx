@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import SearchIcon from '../assets/svg/search.svg';
 
@@ -18,5 +19,19 @@ const SearchInput = styled.input`
 `;
 
 export const SearchContacts = () => {
-  return <SearchInput type="text" placeholder="Search or start new chat" />;
+  const [searchValue, setSearchValue] = useState('');
+  const dispatch = useDispatch();
+  const handleChangeSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+    dispatch({ type: 'SET_SEARCH_CONTACT_VALUE', payload: e.target.value });
+  };
+
+  return (
+    <SearchInput
+      type="text"
+      placeholder="Search or start new chat"
+      value={searchValue}
+      onChange={handleChangeSearchValue}
+    />
+  );
 };

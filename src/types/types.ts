@@ -10,3 +10,9 @@ export type ContactData = {
   id: number;
   messages: ChatMessageData[];
 };
+
+export type State = {
+  selectedUserId: string;
+  searchContactValue: string;
+  contactsData: ContactData[];
+};
