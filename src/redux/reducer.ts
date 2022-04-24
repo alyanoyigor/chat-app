@@ -2,6 +2,7 @@ import { ContactData, State } from '../types/types';
 import { contactsData } from '../data/contactsData';
 
 type ReducerAction =
+  | { type: 'SAVE_CONTACT_DATA' }
   | { type: 'SET_USER_ID'; payload: string }
   | { type: 'SET_READ_MESSAGES'; payload: string }
   | { type: 'SET_SEARCH_CONTACT_VALUE'; payload: string }
@@ -14,19 +15,23 @@ const defaultState: State = {
 };
 
 const savedContactsData = localStorage.getItem('contactsData');
+const savedUserId = localStorage.getItem('userId');
 if (savedContactsData) {
   defaultState.contactsData = JSON.parse(savedContactsData);
 }
-
-window.addEventListener('beforeunload', () =>
-  localStorage.setItem('contactsData', JSON.stringify(defaultState.contactsData))
-);
+if (savedUserId) {
+  defaultState.selectedUserId = savedUserId;
+}
 
 // eslint-disable-next-line default-param-last
 const reducer = (state: State = defaultState, action: ReducerAction): State => {
   switch (action.type) {
     case 'SET_USER_ID':
       return { ...state, selectedUserId: action.payload };
+    case 'SAVE_CONTACT_DATA': {
+      localStorage.setItem('contactsData', JSON.stringify(state.contactsData));
+      return state;
+    }
     case 'ADD_MESSAGE': {
       let copyContactsData = [...state.contactsData];
       const selectedContactData = copyContactsData.find(

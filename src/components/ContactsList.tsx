@@ -28,7 +28,11 @@ const Wrapper = styled.div`
   }
 `;
 
-export const ContactsList = () => {
+type ContactsListProps = {
+  handleHideMenu: () => void;
+};
+
+export const ContactsList = ({ handleHideMenu }: ContactsListProps) => {
   const dispatch = useDispatch();
   const searchValue = useSelector((state: State) => state.searchContactValue);
   let contactsData = useSelector((state: State) => state.contactsData);
@@ -50,6 +54,9 @@ export const ContactsList = () => {
         if (contact && contact.messages[contact.messages.length - 1]?.isRead === false) {
           dispatch({ type: 'SET_READ_MESSAGES', payload: contactItem.dataset.userid });
         }
+        if (window.innerWidth < 768) {
+          handleHideMenu();
+        }
       }
     }
   };
@@ -61,10 +68,9 @@ export const ContactsList = () => {
         contactsData.map((contact) => (
           <ContactItem
             lastMessage={contact.messages[contact.messages.length - 1]}
-            isReadLastMessage={contact.messages[contact.messages.length - 1]?.isRead}
+            key={contact.id}
             name={contact.name}
             img={contact.imgPath}
-            key={contact.id}
             id={contact.id}
           />
         ))

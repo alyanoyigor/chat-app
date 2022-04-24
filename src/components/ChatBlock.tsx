@@ -7,24 +7,36 @@ import { ChatMessagesList } from './ChatMessagesList';
 import { ChatUserInfo } from './ChatUserInfo';
 
 const ChatContainer = styled.div`
+  display: ${(props: { isChatHidden: boolean }) => (props.isChatHidden ? 'none' : 'grid')};
+  grid-area: 'chat';
   height: 100vh;
-  display: grid;
   grid-template-rows: 1fr 5fr 1fr;
+  @media only screen and (min-width: 768px) {
+    display: grid;
+  }
 `;
 
-export const ChatBlock = () => {
+type ChatBlockProps = {
+  isChatHidden: boolean;
+  setIsMenuHidden: (value: boolean) => void;
+  setIsChatHidden: (value: boolean) => void;
+};
+
+export const ChatBlock = ({ isChatHidden, setIsMenuHidden, setIsChatHidden }: ChatBlockProps) => {
   const { selectedUserId, contactsData } = useSelector((state: State) => state);
   const selectedContactData: ContactData | undefined = contactsData.find(
     (contact) => contact.id === Number(selectedUserId)
   );
 
   return (
-    <ChatContainer>
+    <ChatContainer isChatHidden={isChatHidden}>
       {selectedContactData && (
         <>
           <ChatUserInfo
             contactName={selectedContactData.name}
             contactImg={selectedContactData.imgPath}
+            setIsMenuHidden={setIsMenuHidden}
+            setIsChatHidden={setIsChatHidden}
           />
           <ChatMessagesList contactData={selectedContactData} />
           <ChatField />
