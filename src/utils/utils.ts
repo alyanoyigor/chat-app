@@ -1,3 +1,5 @@
+import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
+
 export const convertDate = (
   date: string,
   monthOptions: Intl.DateTimeFormatOptions = { month: 'short' },
@@ -12,4 +14,18 @@ export const convertDate = (
     hour12: true,
   });
   return { month, day, year, time };
+};
+
+export const refreshTokenSetup = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+  const response = res as GoogleLoginResponse;
+  let refreshTiming = (response.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
+
+  const refreshToken = async () => {
+    const newAuthRes = await response.reloadAuthResponse();
+    refreshTiming = (newAuthRes.expires_in || 3600 - 5 * 60) * 1000;
+    localStorage.setItem('authToken', newAuthRes.id_token);
+    setTimeout(refreshToken, refreshTiming);
+  };
+
+  setTimeout(refreshToken, refreshTiming);
 };

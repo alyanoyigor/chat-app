@@ -11,6 +11,7 @@ const MessagesList = styled.div`
   height: 100%;
   overflow: auto;
   scrollbar-width: thin;
+  background-color: #fafafa;
   &::-webkit-scrollbar {
     width: 10px;
   }
