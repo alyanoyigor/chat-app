@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Chat App ([`LOOK CLOSER`](https://chat-app-ai16.web.app/))
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## A simple chat implementation with static contacts and API responses
+![Chat App](https://user-images.githubusercontent.com/85354736/165063890-f64f6aa0-353c-4ca5-b8df-5aa03bd8d027.png)
 
-## Available Scripts
+### Requirements
+#### Basic requirements
+1. [x] As close as possible to the following image should be the chat page
+![image](https://user-images.githubusercontent.com/85354736/165064287-146b4df9-6f2e-4f54-a0d1-6f4ac7fb14c8.png)
+2. [x] User has access to a static list of contacts at the start of the application, as well as their history of communication with some contacts
+3. [x] The history of communication between two contacts is displayed automatically when you select a contact from the contact list. Chat messages must contain the following attributes - message text, time, and date of transmission
+4. [x] Upon selecting a contact, the user has the ability to write a message to the chat room, and upon sending the message, the user will receive an automatic response within 10-15 seconds with the message. To generate an automatic response you must use the Chuck Norris API https://api.chucknorris.io/, namely use the API method which generates random jokes. The value of "value" will be the text of the automatic response in the chat
+5. [x] To implement search among contacts. Functionally, the search will work as in any well-known messenger
+6. [x] Save the history of messages after reloading the page
+7. [x] Contacts with new messages should automatically move up
+8. [x] The code must be accompanied by a link to the deployed application
+#### Additional requirements
+1. [x] Adaptive design
+2. [x] Login through one of the third-party providers (GMAIL, Facebook, etc.)
 
-In the project directory, you can run:
+### Stack
+- React
+- Redux
+- TypeScript
+- Styled Components
+- Prettier
+- Eslint
+- Husky
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Deploy
+https://chat-app-ai16.web.app/
