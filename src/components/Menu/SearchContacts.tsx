@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import SearchIcon from '../assets/svg/search.svg';
+import SearchIcon from '../../assets/svg/search.svg';
 
 const SearchInput = styled.input`
   font-size: 14px;

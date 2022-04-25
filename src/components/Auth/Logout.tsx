@@ -1,8 +1,8 @@
 import React from 'react';
 import { useGoogleLogout } from 'react-google-login';
-import { CLIENT_ID } from '../config';
-import { LogButton } from './LogButton';
-import LogoutIcon from '../assets/svg/logout.svg';
+import { CLIENT_ID } from '../../config';
+import { LogButton } from '../UI/LogButton';
+import LogoutIcon from '../../assets/svg/logout.svg';
 
 type LogoutProps = {
   setUserInfo: (value?: { img: string; name: string }) => void;

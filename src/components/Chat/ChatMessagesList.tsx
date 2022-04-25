@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { ContactData } from '../types/types';
+import { ContactData } from '../../types/types';
 import { ChatMessage } from './ChatMessage';
 
 type ChatMessagesListProps = {

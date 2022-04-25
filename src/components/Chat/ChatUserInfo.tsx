@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { Container } from './Container';
-import { UserAvatar } from './UserAvatar';
-import ArrowIconSVG from '../assets/svg/arrow-left.svg';
+import { Container } from '../UI/Container';
+import { UserAvatar } from '../UI/UserAvatar';
+import ArrowIconSVG from '../../assets/svg/arrow-left.svg';
 
 const UserName = styled.h2`
   font-size: 24px;

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container } from './Container';
-import SendMessageIcon from '../assets/svg/sendMessage.svg';
-import { State } from '../types/types';
+import { Container } from '../UI/Container';
+import SendMessageIcon from '../../assets/svg/sendMessage.svg';
+import { State } from '../../types/types';
 
 const InputWrapper = styled(Container)`
   background-color: #f5f5f5;

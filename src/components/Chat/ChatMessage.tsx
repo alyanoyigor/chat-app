@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ChatMessageData } from '../types/types';
-import { convertDate } from '../utils/utils';
-import { Container } from './Container';
-import { UserAvatar } from './UserAvatar';
+import { ChatMessageData } from '../../types/types';
+import { convertDate } from '../../utils/utils';
+import { Container } from '../UI/Container';
+import { UserAvatar } from '../UI/UserAvatar';
 
 const MessageContainer = styled(Container)`
   display: flex;

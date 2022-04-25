@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { State } from '../types/types';
+import { State } from '../../types/types';
 import { ContactItem } from './ContactItem';
-import { Container } from './Container';
+import { Container } from '../UI/Container';
 
 const ListTitle = styled(Container)`
   color: #4ea5cf;

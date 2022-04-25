@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { ContactData, State } from '../types/types';
+import { ContactData, State } from '../../types/types';
 import { ChatField } from './ChatField';
 import { ChatMessagesList } from './ChatMessagesList';
 import { ChatUserInfo } from './ChatUserInfo';

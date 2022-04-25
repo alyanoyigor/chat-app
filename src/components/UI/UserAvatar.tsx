@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SuccessIcon from '../assets/svg/success.svg';
+import SuccessIcon from '../../assets/svg/success.svg';
 
 type UserAvatarProps = {
   imgPath: string;

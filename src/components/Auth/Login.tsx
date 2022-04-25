@@ -4,10 +4,10 @@ import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from 'react-google-login';
-import { refreshTokenSetup } from '../utils/utils';
-import { CLIENT_ID } from '../config';
-import { LogButton } from './LogButton';
-import GoogleIcon from '../assets/svg/google.svg';
+import { refreshTokenSetup } from '../../utils/utils';
+import { CLIENT_ID } from '../../config';
+import { LogButton } from '../UI/LogButton';
+import GoogleIcon from '../../assets/svg/google.svg';
 
 type LoginProps = {
   setUserInfo: (value: { img: string; name: string }) => void;

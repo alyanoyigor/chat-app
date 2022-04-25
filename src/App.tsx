@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { ChatBlock } from './components/ChatBlock';
-import { MenuContacts } from './components/MenuContacts';
+import { ChatBlock } from './components/Chat/ChatBlock';
+import { MenuContacts } from './components/Menu/MenuContacts';
 
 const AppWrapper = styled.div`
   display: grid;

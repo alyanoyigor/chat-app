@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { UserAvatar } from './UserAvatar';
+import { UserAvatar } from '../UI/UserAvatar';
 import { SearchContacts } from './SearchContacts';
-import DefaultUserImg from '../assets/defaultUserImg.png';
-import { Container } from './Container';
-import { Login } from './Login';
-import { Logout } from './Logout';
+import DefaultUserImg from '../../assets/defaultUserImg.png';
+import { Container } from '../UI/Container';
+import { Login } from '../Auth/Login';
+import { Logout } from '../Auth/Logout';
 
 const MenuWrapper = styled(Container)`
   display: flex;
