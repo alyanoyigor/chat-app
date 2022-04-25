@@ -6,6 +6,9 @@ const Button = styled.button`
   cursor: pointer;
   border: none;
   background-color: transparent;
+  &:focus-visible {
+    outline: none;
+  }
 `;
 
 const Icon = styled.img`
